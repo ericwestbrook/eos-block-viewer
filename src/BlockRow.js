@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Markdown from 'react-markdown'
 import EosApi from 'eosjs-api'
 
-import './BlockRow.css';
+import './BlockRow.css'
 
 const eos = EosApi({
   httpEndpoint: 'https://eos.greymass.com'
@@ -34,10 +34,10 @@ class BlockRow extends Component {
     }
 
     var contracts = []
-    blockInfo.transactions.map(async (transaction, index) => {
+    await blockInfo.transactions.map(async (transaction, index) => {
       listBlockInfo.transactions += transaction.trx.transaction.actions.length
 
-      let success = await transaction.trx.transaction.actions.map(async (action, index) => {
+      await transaction.trx.transaction.actions.map(async (action, index) => {
         let eosCode = await eos.getCode({
           account_name: action.account
         })
@@ -48,8 +48,6 @@ class BlockRow extends Component {
           contract_code: contractCode.ricardian_contract
         })
       })
-
-      return success
     })
 
     this.setState({

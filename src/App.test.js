@@ -1,10 +1,11 @@
-import React from 'react';
-import { mount, shallow } from 'enzyme';
-import App from './App';
+import React from 'react'
+import { mount, shallow } from 'enzyme'
+import App from './App'
 
 it('renders without crashing', async () => {
-  const wrapper = await mount(<App />)
+  const wrapper = shallow(<App />)
   await wrapper.instance().componentDidMount()
+  wrapper.update()
 })
 
 // it('renders welcome message', () => {

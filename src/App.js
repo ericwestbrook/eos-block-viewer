@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import EosApi from 'eosjs-api'
-import logo from './logo.svg';
+import logo from './logo.svg'
 import {Button} from 'react-bootstrap'
 import BlockResults from './BlockResults'
 import BlockRow from './BlockRow'
@@ -23,21 +23,23 @@ class App extends Component {
   }
 
   async getBlocks() {
-    this.setState({
-      blocks: [],
-      selectedRow: '',
-      fetching: true
-    })
-    let chainInfo = await eos.getInfo({})
-    const latestBlock = chainInfo.head_block_num
-    var latestBlocks = []
-    for (let i = 0; i < 10; i++) {
-      latestBlocks.push(latestBlock - i)
+    if (!this.state.fetching){
+      this.setState({
+        blocks: [],
+        selectedRow: '',
+        fetching: true
+      })
+      let chainInfo = await eos.getInfo({})
+      const latestBlock = chainInfo.head_block_num
+      var latestBlocks = []
+      for (let i = 0; i < 10; i++) {
+        latestBlocks.push(latestBlock - i)
+      }
+      this.setState({
+        blocks: latestBlocks,
+        fetching: false
+      })  
     }
-    this.setState({
-      blocks: latestBlocks,
-      fetching: false
-    })
   }
 
   selectRow(index) {
@@ -47,8 +49,8 @@ class App extends Component {
     })
   }
 
-  componentDidMount() {
-    this.getBlocks()
+  async componentDidMount() {
+    await this.getBlocks()
   }
 
   render() {
