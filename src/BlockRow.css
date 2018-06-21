@@ -1,0 +1,16 @@
+.BlockRow {
+  text-align: center;
+  position: relative;
+}
+
+.BlockRow__raw-data {
+  display: none;
+}
+
+.BlockRow.expanded .BlockRow__raw-data {
+  display: block;
+}
+
+.BlockRow__raw-data code {
+  max-width: 80vw;
+}
