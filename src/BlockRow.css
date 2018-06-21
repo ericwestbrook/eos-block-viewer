@@ -1,16 +1,50 @@
 .BlockRow {
-  text-align: center;
   position: relative;
+  padding: 10px;
 }
 
 .BlockRow__raw-data {
   display: none;
 }
 
+.BlockRow.odd {
+  background-color: #efefef;
+}
+
 .BlockRow.expanded .BlockRow__raw-data {
   display: block;
 }
 
-.BlockRow__raw-data code {
-  max-width: 80vw;
+.BlockRow__raw-data pre {
+  margin: 20px;
+}
+
+.BlockRow__transactions {
+  padding: 0 20px;
+}
+
+.BlockRow__details__wrapper {
+  display: flex;
+  width: 100%;
+  position: relative;
+}
+
+.BlockRow__details {
+  display: block;
+}
+
+.BlockRow__details--num {
+  width: 7.5%;
+}
+
+.BlockRow__details--hash {
+  width: 65%;
+}
+
+.BlockRow__details--time {
+  width: 20%;
+}
+
+.BlockRow__details--actions {
+  width: 10%;
 }

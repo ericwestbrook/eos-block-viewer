@@ -9,6 +9,7 @@
     "react": "^16.4.1",
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.4.1",
+    "react-markdown": "^3.3.4",
     "react-scripts": "1.1.4",
     "react-test-renderer": "^16.4.1"
   },

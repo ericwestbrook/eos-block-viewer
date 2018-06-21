@@ -1,0 +1,34 @@
+.BlockResults {
+  text-align: left;
+  position: relative;
+  padding: 20px;
+}
+
+.BlockResults__header__wrapper {
+  display: flex;
+  width: 100%;
+  position: relative;
+  padding: 10px;
+}
+
+.BlockResults__header {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.BlockResults__header--num {
+  width: 7.5%;
+}
+
+.BlockResults__header--hash {
+  width: 65%;
+}
+
+.BlockResults__header--time {
+  width: 20%;
+}
+
+.BlockResults__header--actions {
+  width: 10%;
+}

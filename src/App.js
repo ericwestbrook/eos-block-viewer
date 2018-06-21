@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import * as EosApi from 'eosjs-api'
+import EosApi from 'eosjs-api'
 import logo from './logo.svg';
-import {Button, Table} from 'react-bootstrap'
+import {Button} from 'react-bootstrap'
+import BlockResults from './BlockResults'
 import BlockRow from './BlockRow'
 
 import './App.css';
@@ -40,9 +41,7 @@ class App extends Component {
   }
 
   selectRow(index) {
-    console.log('clicky')
-    const selectedRow = this.state.blocks[index] == this.state.selectedRow ? '' : this.state.blocks[index]
-    console.log('selectedRow: ', selectedRow)
+    const selectedRow = this.state.blocks[index] === this.state.selectedRow ? '' : this.state.blocks[index]
     this.setState({
       selectedRow: selectedRow
     })
@@ -63,27 +62,17 @@ class App extends Component {
           Press the "LOAD" button to refresh.
         </p>
         <Button bsSize="large" bsStyle="primary" onClick={() => this.getBlocks()}>LOAD</Button>
-        <div className="App-results">
-          <Table striped bordered hover responsive>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Hash</th>
-                <th>Timestamp</th>
-                <th># actions</th>
-              </tr>
-            </thead>
-            {this.state.blocks.map((block, index) =>
-              <BlockRow
-                blockId={block}
-                onClick={() => this.selectRow(index)}
-                blockIndex={index}
-                key={index}
-                expanded={this.state.selectedRow == block}
-              />
-            )}
-          </Table>
-        </div>
+        <BlockResults>
+          {this.state.blocks.map((block, index) =>
+            <BlockRow
+              blockId={block}
+              onClick={() => this.selectRow(index)}
+              blockIndex={index}
+              key={index}
+              expanded={this.state.selectedRow === block}
+            />
+          )}
+        </BlockResults>
       </div>
     );
   }
